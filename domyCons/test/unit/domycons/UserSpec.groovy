@@ -8,6 +8,7 @@ import grails.util.Holders
 /**
  * See the API for {@link grails.test.mixin.support.GrailsUnitTestMixin} for usage instructions
  */
+ 
 @TestFor(User)
 class UserSpec extends Specification {
     def config = Holders.config
@@ -29,6 +30,7 @@ class UserSpec extends Specification {
     }
 
     private void validateConstraints(obj, field, error) {
+	
         def validated = obj.validate()
         if (error && error != 'valid') {
             assert !validated
