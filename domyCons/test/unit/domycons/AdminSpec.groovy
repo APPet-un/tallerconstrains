@@ -1,8 +1,6 @@
 package domycons
 
 import grails.test.mixin.TestFor
-import grails.test.mixin.TestMixin
-import grails.test.mixin.support.GrailsUnitTestMixin
 import spock.lang.Specification
 import grails.util.Holders
 
