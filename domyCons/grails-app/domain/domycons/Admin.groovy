@@ -8,7 +8,7 @@ class Admin {
     double rating
 
     static constraints = {
-        level(min: 1, max: 5, nullable: false)
-        rating(min: 0, max: 100, nullable: false)
+        level(nullable: false, min: 1, max: 5)
+        rating(nullable: false, min: (double)0, max: (double)100)
     }
 }
