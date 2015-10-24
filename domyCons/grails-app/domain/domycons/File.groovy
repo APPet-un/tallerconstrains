@@ -6,6 +6,7 @@ class File {
     Byte[] content // El atributo “content” contiene los bytes del archivo en cuestión
     double size // El tamaño (“size”) de un archivo representa el tamaño del archivo en BYTES y  debe ser máximo de 10 MB (MegaBytes)
 
+    static belongsTo = [post: Post]
 
     static constraints = {
         fileType validator: {
@@ -25,5 +26,9 @@ class File {
                 return ["tamaño mayor a 10 MB"]
             }
         }
+    }
+
+    static mapping ={
+        post column: 'post_belong_id'
     }
 }
