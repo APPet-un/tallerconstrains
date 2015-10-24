@@ -5,7 +5,7 @@ class Regular extends User{
 	int postViews
 	int strikesNumber
 	int starsNumber
-	static hasMany = [Post: post]
+	static hasMany = [posts: Post]
 
     static constraints = {
 	
@@ -17,4 +17,7 @@ class Regular extends User{
 	strikesNumber (range: 0..3)		//Se pueden tener de 0 a 3 strikes
 	starsNumber (range: 0..5)		//Se pueden tener de 0 a 5 estrellas
     }
+	static mapping = {
+		tablePerHierarchy true
+	}
 }

@@ -6,6 +6,7 @@ package domycons
 class Admin extends User {
     int level
     double rating
+    static hasMany = [forum: Forum]
 
     static constraints = {
         level(nullable: false, min: 1, max: 5)

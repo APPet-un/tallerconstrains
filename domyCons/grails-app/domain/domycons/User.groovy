@@ -19,7 +19,9 @@ class User {
         lastName(size:3..50)
         age(min: 13)
         password(matches: "[0-9a-za-z]+", minSize: 8)
+    }
 
+    static mapping = {
 
     }
 }
