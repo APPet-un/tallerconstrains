@@ -17,7 +17,14 @@ class Forum {
         }
         category size: 3..15
     }
+
+    static mapping = {
+        posts cascade: 'delete'
+    }
+
     def beforeInsert() {
         dateCreated = new Date()
     }
+
+
 }
