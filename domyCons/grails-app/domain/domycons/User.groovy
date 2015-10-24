@@ -18,7 +18,7 @@ class User {
         name(size:3..50)
         lastName(size:3..50)
         age(min: 13)
-        password(matches: "[0-9a-za-z]+",min: 8)
+        password(matches: "[0-9a-za-z]+", minSize: 8)
 
 
     }

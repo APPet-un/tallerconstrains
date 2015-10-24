@@ -3,7 +3,7 @@ package domycons
 /**
  * Created by Jhh on 10/21/2015.
  */
-class Admin {
+class Admin extends User {
     int level
     double rating
 

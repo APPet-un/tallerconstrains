@@ -1,6 +1,6 @@
 package domycons
 
-class Regular {
+class Regular extends User{
 
 	int postViews
 	int strikesNumber
