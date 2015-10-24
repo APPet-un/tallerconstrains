@@ -6,7 +6,9 @@ class Post {
     Date dateCreated // La fecha de creación del post debe ser futura respecto a la fecha actual cuando se crea el post
     Date lastUpdate // La fecha de actualización del post debe ser futura respecto a la fecha actual
     boolean itsAllowed
-    static hasMany = [File: file]
+
+    static hasMany = [files: File]
+    static belongsTo = [forum: Forum, regularUser: Regular]
 
     static constraints = {
         topic size: 3..50
@@ -19,5 +21,10 @@ class Post {
             if(!dateobj.after(it)) return ['la fecha de actualizacion es anterior a la fecha actual']
         }
 
+    }
+
+    static mapping = {
+        regularUser column: 'owner_id'
+        forum column: 'fatherForum_id'
     }
 }
