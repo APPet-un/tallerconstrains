@@ -6,6 +6,8 @@ class Forum {
     Date dateCreated // La fecha de creación de un foro debe ser futura respecto a la fecha actual
     String category //  La categoría de un foro debe tener una longitud mínima de 3 caracteres y una longitud máxima de 15 caracteres
 
+    static hasOne = [admin: Admin]
+    static hasMany = [posts: Post]
 
     static constraints = {
         name size: 3..20, unique: true
@@ -14,5 +16,8 @@ class Forum {
             if(!it.after(dateobj)) return ['la fecha es pasada a la creacion del post']
         }
         category size: 3..15
+    }
+    def beforeInsert() {
+        dateCreated = new Date()
     }
 }
