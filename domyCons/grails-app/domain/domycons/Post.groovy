@@ -26,5 +26,15 @@ class Post {
     static mapping = {
         regularUser column: 'owner_id'
         forum column: 'fatherForum_id'
+        files cascade: 'delete'
     }
+
+    def beforeInsert(){
+        dateCreated = new Date()
+    }
+
+    def beforeUpdate(){
+        lastUpdate = new Date()
+    }
+
 }
