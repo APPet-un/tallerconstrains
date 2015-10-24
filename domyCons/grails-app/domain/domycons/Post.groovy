@@ -6,6 +6,7 @@ class Post {
     Date dateCreated // La fecha de creación del post debe ser futura respecto a la fecha actual cuando se crea el post
     Date lastUpdate // La fecha de actualización del post debe ser futura respecto a la fecha actual
     boolean itsAllowed
+    static hasMany = [File: file]
 
     static constraints = {
         topic size: 3..50
