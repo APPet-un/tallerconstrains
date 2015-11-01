@@ -2,14 +2,14 @@ package domycons
 
 class File {
 
-    String fileType //  debe verificarse que tenga al menos un “/” y mínimo un caracter antes y un caracter después de dicho símbolo
-    Byte[] content // El atributo “content” contiene los bytes del archivo en cuestión
-    double size // El tamaño (“size”) de un archivo representa el tamaño del archivo en BYTES y  debe ser máximo de 10 MB (MegaBytes)
+    String fileType //  debe verificarse que tenga al menos un â€œ/â€ y mÃ­nimo un caracter antes y un caracter despuÃ©s de dicho sÃ­mbolo
+    Byte[] content // El atributo â€œcontentâ€ contiene los bytes del archivo en cuestiÃ³n
+    double size // El tamaÃ±o (â€œsizeâ€) de un archivo representa el tamaÃ±o del archivo en BYTES y  debe ser mÃ¡ximo de 10 MB (MegaBytes)
 
     static belongsTo = [post: Post]
 
     static constraints = {
-        fileType validator: {
+        /*fileType validator: {
             if (it.size()>= 3){
                 idx = it.indexOf("/")
                 if(idx < 1 && idx >= it.size()-1){
@@ -18,12 +18,12 @@ class File {
             }else{
                 return ['error tipo de file ']
             }
-        }
-
+        }*/
+        fileType validator: {it == 'text/plain'|| it == 'image/png'}
         content nullable: false
         size validator: {
             if(size > 1048576){
-                return ["tamaño mayor a 10 MB"]
+                return ["tamaÃ±o mayor a 10 MB"]
             }
         }
     }
@@ -31,4 +31,15 @@ class File {
     static mapping ={
         post column: 'post_belong_id'
     }
+
+    def share(){
+
+
+    }
+
+    def download(){
+
+
+    }
 }
+
