@@ -9,22 +9,18 @@ import grails.transaction.Transactional
 class FileController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static scaffold = File
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond File.list(params), model:[fileInstanceCount: File.count()]
+        redirect action: showList
+    }
+
+    def showList(){
+        respond File.list()
     }
 
     def show(File fileInstance) {
         respond fileInstance
-    }
-
-    def beforeInterceptor = {
-        log.trace("Se va a ejecutar la accion $actionName")
-    }
-
-    def afterInterceptro = {
-        log.trace("Se ha ejecutado la accion $actionName")
     }
 
     def create() {
@@ -98,6 +94,31 @@ class FileController {
             }
             '*'{ render status: NO_CONTENT }
         }
+    }
+    def share(){
+        render("La funcionalidad se encuentra implementada aun")
+    }
+
+    def download() {
+
+        long theId = params.actualFile
+
+        File theFile = File.get(theId)
+
+        if(theFile == null) {
+            render("El archivo no pudo ser encontrado")
+        }
+        else
+        {
+            response.setContentType("APPLICATION/OCTET-STREAM")
+            response.setHeader("Content-Disposition", "Attachment;Filename=\"${params.content.originalFilename}\"")
+            def theOutput = response.getOutputStream()
+            theOutput << theFile.content
+            theOutput.flush()
+            theOutput.close()
+            redirect (action:'show', fileInstance: theFile)
+        }
+
     }
 
     protected void notFound() {
