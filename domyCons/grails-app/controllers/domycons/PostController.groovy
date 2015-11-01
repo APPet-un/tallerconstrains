@@ -1,7 +1,6 @@
 package domycons
 
 
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -17,14 +16,6 @@ class PostController {
 
     def show(Post postInstance) {
         respond postInstance
-    }
-
-    def beforeInterceptor = {
-        log.trace("Se va a ejecutar la accion $actionName")
-    }
-
-    def afterInterceptro = {
-        log.trace("Se ha ejecutado la accion $actionName")
     }
 
     def create() {
@@ -99,7 +90,55 @@ class PostController {
             '*'{ render status: NO_CONTENT }
         }
     }
+    def share(){
+        render ("La funcionalidad no se ha implementado aun")
+    }
 
+    def rate(){
+        long theId = params.actualPost
+
+        Post thePost = Post.get(theId)
+
+        thePost.rate += 1
+
+        if(post == null) {
+            render('WARNING: Post nulo')
+            return
+        }
+
+        if(post.validate()){
+            thePost.save flush: true
+            redirect action: "show", postInstance: thePost
+        }
+        else {
+            log.error("Error rateando el post")
+            render("Error rateando el post")
+        }
+    }
+
+    def comment(){
+        long theId = params.actualPost
+
+        Post thePost = Post.get(theId)
+
+        if(thePost == null) {
+            render('WARNING: Post nulo')
+            return
+        }
+        theComment = params.content.commentContent
+        thePost.comments.add(theComment)
+
+        if(thePost.validate()){
+            thePost.save flush: true
+            redirect action: "show", postInstance: thePost
+        }
+        else {
+            log.error("Error agregando comentario")
+            render("Error agregando comentario")
+        }
+
+
+    }
     protected void notFound() {
         request.withFormat {
             form multipartForm {
