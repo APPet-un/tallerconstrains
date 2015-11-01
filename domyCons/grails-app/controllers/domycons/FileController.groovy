@@ -112,10 +112,10 @@ class FileController {
         {
             response.setContentType("APPLICATION/OCTET-STREAM")
             response.setHeader("Content-Disposition", "Attachment;Filename=\"${params.content.originalFilename}\"")
-            def theOutput = response.getOutputStream()
-            theOutput << theFile.content
-            theOutput.flush()
-            theOutput.close()
+            def outputStream = response.getOutputStream()
+            outputStream << theFile.content
+            outputStream.flush()
+            outputStream.close()
             redirect (action:'show', fileInstance: theFile)
         }
 
