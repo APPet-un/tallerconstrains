@@ -27,7 +27,7 @@ class FileController {
         log.trace("Se va a ejecutar la accion $actionName")
     }
 
-    def afterInterceptro = {
+    def afterInterceptor = {
         log.trace("Se ha ejecutado la accion $actionName")
     }
 
