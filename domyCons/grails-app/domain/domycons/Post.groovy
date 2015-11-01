@@ -2,13 +2,19 @@ package domycons
 
 class Post {
 
-    String topic // debe tener una longitud mÌnima de 3 caracteres y una  longitud m·xima de 50 caracteres
-    Date dateCreated // La fecha de creaciÛn del post debe ser futura respecto a la fecha actual cuando se crea el post
-    Date lastUpdate // La fecha de actualizaciÛn del post debe ser futura respecto a la fecha actual
+    String topic // debe tener una longitud m√≠nima de 3 caracteres y una  longitud m√°xima de 50 caracteres
+    Date dateCreated // La fecha de creaci√≥n del post debe ser futura respecto a la fecha actual cuando se crea el post
+    Date lastUpdate // La fecha de actualizaci√≥n del post debe ser futura respecto a la fecha actual
     boolean itsAllowed
+    ArrayList<String>comments
+    int rate
 
     static hasMany = [files: File]
     static belongsTo = [forum: Forum, regularUser: Regular]
+
+    Post(){
+        comments = new ArrayList<String>()
+    }
 
     static constraints = {
         topic size: 3..50
@@ -20,7 +26,7 @@ class Post {
             Date dateobj = new Date();
             if(!dateobj.after(it)) return ['la fecha de actualizacion es anterior a la fecha actual']
         }
-
+        rate(nullable: false, min: 0)
     }
 
     static mapping = {
@@ -38,3 +44,4 @@ class Post {
     }
 
 }
+
