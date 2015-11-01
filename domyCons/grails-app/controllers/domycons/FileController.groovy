@@ -23,6 +23,14 @@ class FileController {
         respond fileInstance
     }
 
+    def beforeInterceptor = {
+        log.trace("Se va a ejecutar la accion $actionName")
+    }
+
+    def afterInterceptro = {
+        log.trace("Se ha ejecutado la accion $actionName")
+    }
+
     def create() {
         respond new File(params)
     }
