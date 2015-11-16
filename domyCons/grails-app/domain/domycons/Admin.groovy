@@ -6,6 +6,7 @@ package domycons
 class Admin extends User {
     int level
     double rating
+
     static hasMany = [forum: Forum]
 
     static constraints = {
@@ -19,9 +20,9 @@ class Admin extends User {
     }
 
     //Por cada búsqueda que se realice a la tabla Admin, retornará los resultados ordenados descendentemente dependiendo del atributo level
-    def c = Admin.createCriteria()
+    /*def c = Admin.createCriteria()
     def results = c.list{
         order("level","desc")
-    }
+    }*/
 
 }

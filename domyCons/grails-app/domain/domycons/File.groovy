@@ -9,6 +9,7 @@ class File {
     static belongsTo = [post: Post]
 
     static constraints = {
+
         /*fileType validator: {
             if (it.size()>= 3){
                 idx = it.indexOf("/")
@@ -19,10 +20,10 @@ class File {
                 return ['error tipo de file ']
             }
         }*/
-        fileType validator: {it == 'text/plain'|| it == 'image/png'}
+        fileType inList: [".txt (text/plain)",".png(image/png)"]
         content nullable: false
         size validator: {
-            if(size > 1048576){
+            if(it > 1048576){
                 return ["tamaño mayor a 10 MB"]
             }
         }
