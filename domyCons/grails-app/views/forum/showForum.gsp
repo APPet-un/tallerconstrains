@@ -18,9 +18,11 @@
     <meta name="layout" content="main"/>
     <title>Forum</title>
 </head>
-    <li><label>Foro N ${forum.id}</label></li>
+    <label>Foro N ${forum.id}</label>
     <li><label>Nombre: ${forum.name}</label></li>
     <li><label>Fecha de creación: <g:formatDate format="yyyy-MM-dd" date="${forum.dateCreate}"/></label></li>
     <li><label>Categoría: ${forum.category}</label></li>
+    <li><label>Administrador: ${forum.admin.name}</label></li>
+
 </body>
 </html>

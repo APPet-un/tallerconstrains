@@ -13,9 +13,9 @@
 </head>
 
 <body>
-    <li><label>Post N ${post.id}</label>
+    <label>Post N ${post.id}</label>
     <li><label>Tema: ${post.topic}</label></li>
-    <li><label>Fecha de creación: ${post.dateCreate}</label></li>
+    <li><label>Fecha de creación: <g:formatDate format="yyyy-MM-dd" date="${post.dateCreate}"/></label></li>
     <li><label>Está permitido: ${post.itsAllowed}</label></li>
     <li><label>Comentarios: ${post.comments}</label></li>
     <li><label>Rate: ${post.rate}</label></li>
