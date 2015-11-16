@@ -18,6 +18,10 @@ class ForumController {
         respond forumInstance
     }
 
+    def showForum(){
+        render view: "showForum", model: [forum: Forum.get(params.id)]
+    }
+
     def beforeInterceptor = {
         log.trace("Se va a ejecutar la accion $actionName")
     }

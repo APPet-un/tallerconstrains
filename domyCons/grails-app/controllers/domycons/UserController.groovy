@@ -19,6 +19,10 @@ class UserController {
         respond userInstance
     }
 
+    def showUser(){
+        render view: "showUser", model: [user: User.get(params.id)]
+    }
+
     def beforeInterceptor = {
         log.trace("Se va a ejecutar la accion $actionName")
     }

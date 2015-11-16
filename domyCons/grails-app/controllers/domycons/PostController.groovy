@@ -18,6 +18,10 @@ class PostController {
         respond postInstance
     }
 
+    def showPost(){
+        render view: "showPost", model: [post: Post.get(params.id)]
+    }
+
     def create() {
         respond new Post(params)
     }

@@ -10,22 +10,44 @@ class AdminController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Admin.list(params), model:[adminInstanceCount: Admin.count()]
+    def index() {
+        redirect action: 'showAdmin'
+    }
+
+    def showAdmins(){
+        String response = ""
+
+        Admin.getAll().each {
+            response += it.name + " "
+            response += it.lastName + " "
+            response += it.age + " "
+            response += it.rating + " "
+            response += it.level + " "
+            response += "\n"
+        }
+        render response
+        //[admins: Admin.get(params)]
+        println "Redireccion Exitosa"
+
+    }
+
+    def showAdmin(){
+        render view: "showAdmin", model: [admin: Admin.get(params.id)]
     }
 
     def show(Admin adminInstance) {
         respond adminInstance
     }
+
     def beforeInterceptor = {
-        log.trace("Se va a ejecutar la accion $actionName")
+        println "Esta ejecutando la accion: " + actionName
+
     }
 
-    def afterInterceptro = {
-        log.trace("Se ha ejecutado la accion $actionName")
-    }
+    def afterInterceptor = {
+        println "se ha ejecutando la accion: " + actionName
 
+    }
 
     def create() {
         respond new Admin(params)

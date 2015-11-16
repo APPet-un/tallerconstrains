@@ -22,7 +22,9 @@ class RegularController {
     def create() {
         respond new Regular(params)
     }
-
+    def showRegular(){
+        render view: "showRegular", model: [regular: Regular.get(params.id)]
+    }
     def beforeInterceptor = {
         log.trace("Se va a ejecutar la accion $actionName")
     }

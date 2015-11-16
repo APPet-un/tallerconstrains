@@ -19,6 +19,10 @@ class FileController {
         respond File.list()
     }
 
+    def showAdmin(){
+        render view: "showFile", model: [file: File.get(params.id)]
+    }
+
     def show(File fileInstance) {
         respond fileInstance
     }
