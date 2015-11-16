@@ -11,7 +11,7 @@ class AdminController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index() {
-        redirect action: 'showAdmin'
+        render (view: 'adminLinks.gsp')
     }
 
     def showAdmins(){
@@ -33,6 +33,10 @@ class AdminController {
 
     def showAdmin(){
         render view: "showAdmin", model: [admin: Admin.get(params.id)]
+    }
+
+    def adminLinks() {
+        render view: "adminLinks", model:[adminList: Admin.list(params)]
     }
 
     def show(Admin adminInstance) {

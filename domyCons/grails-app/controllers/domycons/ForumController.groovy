@@ -10,8 +10,7 @@ class ForumController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Forum.list(params), model:[forumInstanceCount: Forum.count()]
+        render view: "forumLinks"
     }
 
     def show(Forum forumInstance) {
@@ -22,12 +21,18 @@ class ForumController {
         render view: "showForum", model: [forum: Forum.get(params.id)]
     }
 
-    def beforeInterceptor = {
-        log.trace("Se va a ejecutar la accion $actionName")
+    def forumLinks() {
+        render view: "forumLinks", model:[forumList: Forum.list(params)]
     }
 
-    def afterInterceptro = {
-        log.trace("Se ha ejecutado la accion $actionName")
+    def beforeInterceptor = {
+        println "Esta ejecutando la accion: " + actionName
+
+    }
+
+    def afterInterceptor = {
+        println "se ha ejecutando la accion: " + actionName
+
     }
 
     def create() {

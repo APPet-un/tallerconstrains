@@ -10,8 +10,7 @@ class PostController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Post.list(params), model:[postInstanceCount: Post.count()]
+        render view: "postLinks"
     }
 
     def show(Post postInstance) {
@@ -22,10 +21,22 @@ class PostController {
         render view: "showPost", model: [post: Post.get(params.id)]
     }
 
+    def PostLinks() {
+        render view: "postLinks", model:[postList: Post.list(params)]
+    }
+
     def create() {
         respond new Post(params)
     }
+    def beforeInterceptor = {
+        println "Esta ejecutando la accion: " + actionName
 
+    }
+
+    def afterInterceptor = {
+        println "se ha ejecutando la accion: " + actionName
+
+    }
     @Transactional
     def save(Post postInstance) {
         if (postInstance == null) {

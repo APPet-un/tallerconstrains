@@ -12,14 +12,14 @@ class FileController {
     static scaffold = File
 
     def index(Integer max) {
-        redirect action: showList
+        render view: "fileLinks"
     }
 
     def showList(){
         respond File.list()
     }
 
-    def showAdmin(){
+    def showFile(){
         render view: "showFile", model: [file: File.get(params.id)]
     }
 
@@ -27,14 +27,19 @@ class FileController {
         respond fileInstance
     }
 
+    def fileLinks() {
+        render view: "fileLinks", model:[fileList: File.list(params)]
+    }
+
     def beforeInterceptor = {
-        log.trace("Se va a ejecutar la accion $actionName")
+        println "Esta ejecutando la accion: " + actionName
+
     }
 
     def afterInterceptor = {
-        log.trace("Se ha ejecutado la accion $actionName")
-    }
+        println "se ha ejecutando la accion: " + actionName
 
+    }
     def create() {
         respond new File(params)
     }

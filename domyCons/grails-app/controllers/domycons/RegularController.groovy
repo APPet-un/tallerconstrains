@@ -11,8 +11,7 @@ class RegularController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Regular.list(params), model:[regularInstanceCount: Regular.count()]
+        render view: "regularLinks"
     }
 
     def show(Regular regularInstance) {
@@ -25,12 +24,17 @@ class RegularController {
     def showRegular(){
         render view: "showRegular", model: [regular: Regular.get(params.id)]
     }
+    def regularLinks() {
+        render view: "regularLinks", model:[regularList: Regular.list(params)]
+    }
     def beforeInterceptor = {
-        log.trace("Se va a ejecutar la accion $actionName")
+        println "Esta ejecutando la accion: " + actionName
+
     }
 
-    def afterInterceptro = {
-        log.trace("Se ha ejecutado la accion $actionName")
+    def afterInterceptor = {
+        println "se ha ejecutando la accion: " + actionName
+
     }
 
     @Transactional

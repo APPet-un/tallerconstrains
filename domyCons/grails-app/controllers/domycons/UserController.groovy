@@ -11,8 +11,7 @@ class UserController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond User.list(params), model:[userInstanceCount: User.count()]
+        render view: "userLinks"
     }
 
     def show(User userInstance) {
@@ -23,13 +22,20 @@ class UserController {
         render view: "showUser", model: [user: User.get(params.id)]
     }
 
-    def beforeInterceptor = {
-        log.trace("Se va a ejecutar la accion $actionName")
+    def userLinks() {
+        render view: "userLinks", model:[userList: User.list(params)]
     }
 
-    def afterInterceptro = {
-        log.trace("Se ha ejecutado la accion $actionName")
+    def beforeInterceptor = {
+        println "Esta ejecutando la accion: " + actionName
+
     }
+
+    def afterInterceptor = {
+        println "se ha ejecutando la accion: " + actionName
+
+    }
+
 
     def create() {
         respond new User(params)
