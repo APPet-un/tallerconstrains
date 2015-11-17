@@ -21,4 +21,8 @@ class User {
         password(matches: "[0-9a-za-z]+", minSize: 8)
     }
 
+    String toString(){
+        "$name"
+    }
+
 }
