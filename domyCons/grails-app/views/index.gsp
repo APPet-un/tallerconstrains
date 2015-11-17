@@ -5,11 +5,7 @@
   Date: 16/11/2015
   Time: 07:04 PM
 --%>
-<!--
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
--->
+
 <html>
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
