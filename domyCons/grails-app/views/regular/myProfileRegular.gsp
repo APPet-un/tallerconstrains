@@ -8,8 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="index"/>
-    <title>User R Prof</title>
+    <title>Usuario Regular</title>
 </head>
 <body>
 <div class="container" style="border: 1px solid black; border-top: 0; padding: 2%">
