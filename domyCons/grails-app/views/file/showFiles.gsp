@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Stephanie
   Date: 16/11/2015
-  Time: 02:24 PM
+  Time: 09:39 PM
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
@@ -15,12 +15,15 @@
 </head>
 
 <body>
-
 <div id="header">
-    <h1>Foros</h1>
+    <h1>Archivos</h1>
 </div>
-<g:each in="${forumList}"  var="forum">
-    <li><g:link action="showForum" id="${forum.id}">${forum.name}</g:link></li>
-</g:each>
+    <g:each in="${fileList}"  var="file">
+        <li><label>Archivo N ${file.id}</label></li>
+        <li><label>Tipo de archivo: ${file.content}</label></li>
+        <li><label>Tamaño: ${file.size}</label></li>
+    </g:each>
+    <div id="col2" class="gbox">
+    <div id="col3" class="gbox">
 </body>
 </html>

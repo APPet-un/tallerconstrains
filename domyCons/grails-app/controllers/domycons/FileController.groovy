@@ -23,6 +23,10 @@ class FileController {
         render view: "showFile", model: [file: File.get(params.id)]
     }
 
+    def showFiles(){
+        render view: "showFiles", model: [fileList: File.list(params)]
+    }
+
     def show(File fileInstance) {
         respond fileInstance
     }

@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Stephanie
   Date: 16/11/2015
-  Time: 09:17 PM
+  Time: 09:31 PM
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" %>
@@ -13,22 +13,27 @@
     <meta name="description" content="" />
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'default1.css')}">
 </head>
+
 <body>
 <div id="header">
-    <h1>Foros</h1>
+    <h1>Users</h1>
 </div>
-<div id="content">
-    <g:each in="${forumList}"  var="forum">
-        <label>Foro N ${forum.id}</label>
-        <li><label>Nombre: ${forum.name}</label></li>
-        <li><label>Fecha de creación: <g:formatDate format="yyyy-MM-dd" date="${forum.dateCreate}"/></label></li>
-        <li><label>Categoría: ${forum.category}</label></li>
-        <li><label>Administrador: ${forum.admin.name}</label></li>
-    </g:each>
-    <div id="col2" class="gbox">
-    <div id="col3" class="gbox">
 
-    </div>
-    </div>
+<div id="content">
+
+<div id="users" class="obox">
+    <g:each in="${userList}"  var="user">
+        <ul><li><label>Tipo de usuario N ${user.class.name.toString()}</label></ul>
+        <li><label>Nombre de usuario: ${user.username}</label></li>
+        <li><label>Nombre: ${user.name}</label></li>
+        <li><label>Apellido: ${user.lastName}</label></li>
+        <li><label>Edad: ${user.age}</label></li>
+    </g:each>
+</div>
+    <div id="col2" class="gbox">
+        <div id="col3" class="gbox">
+</div>
+
 </body>
 </html>
+

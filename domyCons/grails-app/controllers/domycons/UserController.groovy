@@ -47,6 +47,10 @@ class UserController {
         render view: "myProfile"
     }
 
+    def showUsers(){
+        render view: "showUsers", model: [userList: User.list(params)]
+    }
+
     def checkUser = {
         if(!session.user){
             redirect(controller: User, action:'login')

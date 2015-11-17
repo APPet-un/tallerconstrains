@@ -21,6 +21,10 @@ class PostController {
         render view: "showPost", model: [post: Post.get(params.id)]
     }
 
+    def showPosts(){
+        render view: "showPosts", model: [postList: Post.list(params)]
+    }
+
     def PostLinks() {
         render view: "postLinks", model:[postList: Post.list(params)]
     }

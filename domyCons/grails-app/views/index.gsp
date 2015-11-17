@@ -1,3 +1,4 @@
+<%@ page import="domycons.Post" %>
 <%--
   Created by IntelliJ IDEA.
   User: Stephanie
@@ -21,7 +22,6 @@ Released for free under a Creative Commons Attribution 2.5 License
 <div id="header">
 	<h1><a href="#">Forum 2.0</a></h1>
 	<h2>Login</h2>
-
 </div>
 
 <div id="content">
@@ -33,11 +33,10 @@ Released for free under a Creative Commons Attribution 2.5 License
 				<h2 class="heading">Consulta:</h2>
 				<div class="content">
 					<ul>
-						<li><a href="${createLink(controller: 'Forum', action: 'showForums')}">Foros</a></li>
-						<li><a href="#">Usuario</a></li>
-						<li><a href="#">Entradas (Post)</a></li>
-						<li><a href="#">Archivos</a></li>
-
+						<li><a href="${createLink(controller: 'Forum', action: 'forumLinks')}">Foros</a></li>
+						<li><a href="${createLink(controller: 'User', action: 'showUsers')}">Usuarios</a></li>
+						<li><a href="${createLink(controller: 'Post', action: 'showPosts')}">Entradas (Post)</a></li>
+						<li><a href="${createLink(controller: 'File',action: 'showFiles')}">Archivos</a></li>
 					</ul>
 				</div>
 			</div>
@@ -48,17 +47,9 @@ Released for free under a Creative Commons Attribution 2.5 License
 		<h2 class="heading">Utimas entradas(Post)</h2>
 		<div class="content">
 			<ul>
-				<li><a href="#">February</a> (7) </li>
-				<li><a href="#">January 2007</a> (31)</li>
-				<li><a href="#">December 2006</a> (31)</li>
-				<li><a href="#">November 2006</a> (30)</li>
-				<li><a href="#">October 2006</a> (31)</li>
-				<li><a href="#">September 2006</a> (30)</li>
-				<li><a href="#">August 2006</a> (31)</li>
-				<li><a href="#">July 2006</a> (31)</li>
-				<li><a href="#">June 2006</a> (30)</li>
-				<li><a href="#">May 2006</a> (31)</li>
-
+			<g:each in="${ domycons.Post.list(params)}"  var="post">
+				<li><g:link action="showPost" id="${post.id}" controller="Post">${post.topic}</g:link></li>
+			</g:each>
 			</ul>
 		</div>
 	</div>
@@ -67,11 +58,9 @@ Released for free under a Creative Commons Attribution 2.5 License
 		<h2 class="heading">Foros con más entradas</h2>
 		<div class="content">
 			<ul>
-				<li><a href="#">My Blog</a></li>
-				<li><a href="#">My Photos</a></li>
-				<li><a href="#">My Favorites</a></li>
-				<li><a href="#">About Me</a></li>
-				<li><a href="#">Contact Me</a></li>
+				<g:each in="${ domycons.Forum.list(params)}"  var="forum">
+					<li><g:link action="showForum" id="${forum.id}" controller="Forum">${forum.name}</g:link></li>
+				</g:each>
 			</ul>
 		</div>
 	</div>
