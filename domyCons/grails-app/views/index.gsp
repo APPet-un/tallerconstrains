@@ -33,7 +33,7 @@ Released for free under a Creative Commons Attribution 2.5 License
 				<h2 class="heading">Consulta:</h2>
 				<div class="content">
 					<ul>
-						<li><a href="#">Foros</a></li>
+						<li><a href="${createLink(controller: 'Forum', action: 'showForums')}">Foros</a></li>
 						<li><a href="#">Usuario</a></li>
 						<li><a href="#">Entradas (Post)</a></li>
 						<li><a href="#">Archivos</a></li>
