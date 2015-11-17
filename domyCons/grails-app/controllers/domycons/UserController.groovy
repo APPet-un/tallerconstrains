@@ -26,6 +26,34 @@ class UserController {
         render view: "userLinks", model:[userList: User.list(params)]
     }
 
+
+    def login ={
+
+    }
+
+    def doLogin = {
+        def user = User.findWhere(username: params['username'], password: params['password'])
+        session.user = user
+        if(user) {
+            redirect(action: 'myProfile')
+            flash.message = "logged in as <b>$user.name $user.lastName ($user.username)</b>"
+        }else{
+            redirect(action: 'login')
+            flash.message = "Invalid Username/Password, please try again"
+        }
+    }
+
+    def myProfile = {
+        render view: "myProfile"
+    }
+
+    def checkUser = {
+        if(!session.user){
+            redirect(controller: User, action:'login')
+            return false
+        }
+    }
+
     def beforeInterceptor = {
         println "Esta ejecutando la accion: " + actionName
 
