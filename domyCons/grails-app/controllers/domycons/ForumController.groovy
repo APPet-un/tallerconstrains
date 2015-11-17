@@ -21,6 +21,10 @@ class ForumController {
         render view: "showForum", model: [forum: Forum.get(params.id)]
     }
 
+    def showForums(){
+        render view: "showForums", model: [forumList: Forum.list(params)]
+    }
+
     def forumLinks() {
         render view: "forumLinks", model:[forumList: Forum.list(params)]
     }
