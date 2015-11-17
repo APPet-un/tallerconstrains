@@ -9,7 +9,7 @@
 <html>
 <head>
     <meta name="layout" content="index"/>
-    <title>Perfil</title>
+    <title>User R Prof</title>
 </head>
 <body>
 <div class="container" style="border: 1px solid black; border-top: 0; padding: 2%">
