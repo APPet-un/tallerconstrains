@@ -28,7 +28,7 @@ class UserController {
 
 
     def login ={
-
+        render view: "login"
     }
 
     def doLogin = {

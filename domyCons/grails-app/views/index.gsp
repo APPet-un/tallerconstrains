@@ -21,7 +21,7 @@ Released for free under a Creative Commons Attribution 2.5 License
 <body>
 <div id="header">
 	<h1><a href="#">Forum 2.0</a></h1>
-	<h2>Login</h2>
+	<h2><a href="${createLink(controller: 'User', action: 'login')}">Login</a></h2>
 </div>
 
 <div id="content">

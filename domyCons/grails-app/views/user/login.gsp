@@ -8,16 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <title></title>
-    <style type="text/css">
-        label{
-            float:left;
-            width:65px;
-        }
-    </style>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'default1.css')}">
 </head>
 
 <body>
+<div id="content">
+
+    <div id="login" class="obox">
     <g:form action="doLogin" style="padding-left: 200px" method="post">
     <div style="width: 220px">
         <label>Nombre usuario:</label><input type="text" name="username"/>
@@ -25,5 +25,7 @@
         <label>&nbsp</label><input type="submit" name="Login"/>
     </div>
     </g:form>
+    </div>
+    </div>
 </body>
 </html>

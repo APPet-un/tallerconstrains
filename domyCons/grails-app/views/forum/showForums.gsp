@@ -25,10 +25,9 @@
         <li><label>Categoría: ${forum.category}</label></li>
         <li><label>Administrador: ${forum.admin.name}</label></li>
     </g:each>
+</div>
     <div id="col2" class="gbox">
     <div id="col3" class="gbox">
-
-    </div>
-    </div>
+</div>>
 </body>
 </html>
