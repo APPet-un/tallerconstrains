@@ -35,8 +35,20 @@ class UserController {
         def user = User.findWhere(username: params['username'], password: params['password'])
         session.user = user
         if(user) {
-            redirect(action: 'myProfile')
-            flash.message = "logged in as <b>$user.name $user.lastName ($user.username)</b>"
+            User u = user
+            println u.getClass().name
+
+            if(u.getClass().name.equals("domycons.Regular")){
+                println "Soy regular"
+                redirect(action: 'myProfileRegular', controller: 'Regular')
+                flash.message = "logged in as <b>$u.name $u.lastName ($u.username)</b>"
+            }
+            else if(u.getClass().name.equals("domycons.Admin")){
+                redirect(action: 'myProfileAdmin', controller: 'Admin')
+                flash.message = "logged in as <b>$u.name $u.lastName ($u.username)</b>"
+            }
+            //render view: "myProfile"
+
         }else{
             redirect(action: 'login')
             flash.message = "Invalid Username/Password, please try again"

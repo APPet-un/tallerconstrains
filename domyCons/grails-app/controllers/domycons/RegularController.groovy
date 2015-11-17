@@ -27,6 +27,10 @@ class RegularController {
     def regularLinks() {
         render view: "regularLinks", model:[regularList: Regular.list(params)]
     }
+
+    def myProfileRegular = {
+        render view: "myProfileRegular"
+    }
     def beforeInterceptor = {
         println "Esta ejecutando la accion: " + actionName
 

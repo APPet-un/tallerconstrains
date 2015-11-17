@@ -43,6 +43,10 @@ class AdminController {
         respond adminInstance
     }
 
+    def myProfileAdmin = {
+        render view: "myProfileAdmin"
+    }
+
     def beforeInterceptor = {
         println "Esta ejecutando la accion: " + actionName
 
